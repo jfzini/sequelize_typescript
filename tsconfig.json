@@ -7,7 +7,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "typeRoots": [
-      "public/src/@types",
+      "src/@types",
       "./node_modules/@types"
     ],
     "esModuleInterop": true,
@@ -15,6 +15,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["public/src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
