@@ -13,6 +13,7 @@ const getAllOrders = async (): Promise<Service<Order>> => {
       },
     ],
   });
+  
   const parsedOrders = rawOrders.map((order) => order.toJSON());
 
   const resultOrders = parsedOrders.map((order) => {
