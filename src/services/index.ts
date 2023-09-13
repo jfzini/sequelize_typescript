@@ -1,3 +1,6 @@
 import productsServices from './products.services';
 
-export default { createProduct: productsServices.createProduct };
+export default {
+  createProduct: productsServices.createProduct,
+  getAllProducts: productsServices.getAllProducts,
+};

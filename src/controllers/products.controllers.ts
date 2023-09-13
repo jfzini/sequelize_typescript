@@ -7,6 +7,12 @@ const createProduct = async (req: Request, res: Response) => {
   return res.status(mapStatus(result.status)).json(result.data);
 };
 
+const getAllProducts = async (_req: Request, res: Response) => {
+  const result = await services.getAllProducts();
+  return res.status(mapStatus(result.status)).json(result.data);
+};
+
 export default {
   createProduct,
+  getAllProducts,
 };

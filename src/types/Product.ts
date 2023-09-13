@@ -9,5 +9,5 @@ export type Product = {
 
 export type ProductService = {
   status: keyof typeof StatusHTTP;
-  data: Product;
+  data: Product | Product[];
 };

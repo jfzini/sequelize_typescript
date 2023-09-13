@@ -7,6 +7,13 @@ const createProduct = async (product: Product): Promise<ProductService> => {
   return { status: 'CREATED', data: result };
 };
 
+const getAllProducts = async (): Promise<ProductService> => {
+  const rawProducts = await ProductModel.findAll();
+  const parsedProducts = rawProducts.map((product) => product.toJSON());
+  return { status: 'SUCCESSFUL', data: parsedProducts };
+};
+
 export default {
   createProduct,
+  getAllProducts,
 };
