@@ -16,5 +16,4 @@ describe('POST /products', function () {
     expect(res).to.have.status(201);
     expect(res.body).to.be.deep.equal(resCreatedProduct);
   });
-
 });

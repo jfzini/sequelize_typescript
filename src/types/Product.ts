@@ -3,7 +3,7 @@ import StatusHTTP from './StatusHTTP';
 export type Product = {
   id: number;
   name: string;
-  price: number;
+  price: string;
   orderId?: number;
 };
 
