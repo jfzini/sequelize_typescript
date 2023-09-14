@@ -4,7 +4,7 @@ export type Order = {
   productIds?: { id: number }[] | number[];
 };
 
-export type CreatedOrder =
+export type CreateOrder =
   | {
     userId: number;
     productIds: number[];
