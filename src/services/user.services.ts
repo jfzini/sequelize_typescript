@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import UserModel from '../database/models/user.model';
 import auth from '../auth/token.jwt';
-import { UserToken } from '../types/User';
+import { UserService, UserToken } from '../types/User';
 import { Service } from '../types/Service';
 
 const userLogin = async (username: string, password: string): Promise<Service<UserToken>> => {
@@ -17,4 +17,14 @@ const userLogin = async (username: string, password: string): Promise<Service<Us
   return { status: 'UNAUTHORIZED', data: { message: 'Username or password invalid' } };
 };
 
-export default { userLogin };
+const getUserById = async (id: number): Promise<Service<UserService>> => {
+  const rawUser = await UserModel.findByPk(id);
+  const parsedUser = rawUser?.toJSON();
+  if (parsedUser) {
+    const { password, ...user } = parsedUser;
+    return { status: 'SUCCESSFUL', data: user };
+  }
+  return { status: 'NOT_FOUND', data: { message: '"userId" not found' } };
+};
+
+export default { userLogin, getUserById };

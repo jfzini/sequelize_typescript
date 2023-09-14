@@ -1,5 +1,5 @@
 import ProductModel from '../database/models/product.model';
-import { Product } from '../types/Product';
+import { Product, ProductService } from '../types/Product';
 import { Service } from '../types/Service';
 
 const createProduct = async (product: Product): Promise<Service<Product>> => {
@@ -14,7 +14,17 @@ const getAllProducts = async (): Promise<Service<Product>> => {
   return { status: 'SUCCESSFUL', data: parsedProducts };
 };
 
+const getProductById = async (id: number): Promise<Service<ProductService>> => {
+  const rawProduct = await ProductModel.findByPk(id);
+  const parsedProduct = rawProduct?.toJSON();
+  if (parsedProduct) {
+    return { status: 'SUCCESSFUL', data: parsedProduct };
+  }
+  return { status: 'NOT_FOUND', data: { message: '"productId" not found' } };
+};
+
 export default {
   createProduct,
   getAllProducts,
+  getProductById,
 };

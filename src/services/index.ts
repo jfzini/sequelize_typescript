@@ -5,6 +5,9 @@ import userServices from './user.services';
 export default {
   createProduct: productsServices.createProduct,
   getAllProducts: productsServices.getAllProducts,
+  getProductById: productsServices.getProductById,
   getAllOrders: ordersServices.getAllOrders,
   userLogin: userServices.userLogin,
+  getUserById: userServices.getUserById,
+  createOrder: ordersServices.createOrder,
 };

@@ -2,11 +2,9 @@ import sinon from 'sinon';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import bcrypt from 'bcryptjs';
-import auth from '../../../src/auth/token.jwt';
 import app from '../../../src/app';
 import UserModel from '../../../src/database/models/user.model';
 import { mockedUserFromModel } from '../../mocks/user.mocks';
-import { validToken } from '../../mocks/token.mocks';
 
 chai.use(chaiHttp);
 

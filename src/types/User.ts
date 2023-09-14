@@ -3,10 +3,12 @@ export type User = {
   username: string;
   vocation: string;
   level: number;
-  password: string;
+  password?: string;
 };
 
 export type UserToken = {
   token?: string;
   message?: string;
 };
+
+export type UserService = User | UserToken;

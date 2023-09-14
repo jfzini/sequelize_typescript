@@ -7,4 +7,5 @@ export default {
   getAllProducts: productController.getAllProducts,
   getAllOrders: ordersControllers.getAllOrders,
   userLogin: userControllers.userLogin,
+  createOrder: ordersControllers.createOrder,
 };

@@ -6,7 +6,7 @@ const userLogin = async (req: Request, res: Response) => {
   const { username, password } = req.body;
   const result = await services.userLogin(username, password);
   
-  res.status(mapStatus(result.status)).json(result.data);
+  return res.status(mapStatus(result.status)).json(result.data);
 };
 
 export default { userLogin };
