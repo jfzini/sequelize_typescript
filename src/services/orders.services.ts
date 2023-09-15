@@ -42,11 +42,6 @@ const createOrder = async (userId: number, productIds: number[]): Promise<Servic
     console.error(error);
     return { status: 'INTERNAL_SERVER_ERROR', data: { message: 'Something went wrong' } };
   }
-  // const newOrder = await OrderModel.create({ userId });
-  // productIds.forEach(async (productId) => {
-  //   await ProductModel.update({ orderId: newOrder.dataValues.id }, { where: { id: productId } });
-  // });
-  // return { status: 'CREATED', data: { userId, productIds } };
 };
 
 export default { getAllOrders, createOrder };
