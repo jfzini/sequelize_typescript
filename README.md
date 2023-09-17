@@ -21,10 +21,10 @@ ___
 ___
 ## 🧑‍🔬 Testes
 
-A aplicação possui *testes de integração*. Para tanto, foram utilizados os frameworks `Mocha`, `Chai`, `Sinon` e `Chai-http`.
-Para executar os testes, no diretório da aplicação `backend` você poderá executar os seguintes comandos:
+A aplicação possui *testes de integração* e *testes unitários*. Para tanto, foram utilizados os frameworks `Mocha`, `Chai`, `Sinon` e `Chai-http`.
+Para executar os testes:
 
-`npm run test:local` para executar todos os testes com o `Mocha`;
+`npm run test` para executar todos os testes com o `Mocha`;
 `npm run test:coverage` para checar a cobertura de testes.
 
 ___
@@ -51,6 +51,8 @@ ___
   * Sinon
 
   * Chai-http
+
+  * bcrypt
 
 ___
 
