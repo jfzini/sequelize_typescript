@@ -1,18 +1,16 @@
 import { NextFunction, Request, Response } from 'express';
 import auth from '../auth/token.jwt';
 
-// declaração global para conseguir inserir a propriedade user no objeto Request
-// declare global {
-//   namespace Express {
-//     interface Request {
-//       user: {
-//         username: string;
-//         password: string;
-//       };
-//     }
-//   }
-// }
-// desabilitado por conta do linter
+// global declaration to add user to req
+declare global {
+  namespace Express {
+    interface Request {
+      user: {
+        username: string;
+      };
+    }
+  }
+}
 
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization;
@@ -24,7 +22,8 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
   if (!decoded) {
     return res.status(401).json({ message: 'Invalid token' });
   }
-  // req.user = decoded;
+  const { username } = decoded;
+  req.user = { username };
   next();
 };
 

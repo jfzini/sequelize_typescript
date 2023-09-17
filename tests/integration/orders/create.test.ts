@@ -1,10 +1,11 @@
 import sinon from 'sinon';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
+import bcrypt from 'bcryptjs';
 import OrderModel from '../../../src/database/models/order.model';
 import ProductModel from '../../../src/database/models/product.model';
 import app from '../../../src/app';
-import { validToken } from '../../mocks/token.mocks';
+// import { validToken } from '../../mocks/token.mocks';
 import UserModel from '../../../src/database/models/user.model';
 import { mockedUserFromModel } from '../../mocks/user.mocks';
 import { productMock } from '../../mocks/products.mocks';
@@ -12,8 +13,17 @@ import { productMock } from '../../mocks/products.mocks';
 chai.use(chaiHttp);
 
 describe('POST /orders', function () {
-  beforeEach(function () {
+  let validToken: string;
+
+  beforeEach(async function () {
     sinon.restore();
+    sinon.stub(UserModel, 'findOne').resolves(UserModel.build(mockedUserFromModel));
+    sinon.stub(bcrypt, 'compareSync').returns(true);
+    const res = await chai.request(app).post('/login').send({
+      username: 'Hagar',
+      password: 'terrível',
+    });
+    validToken = res.body.token;
   });
 
   it('should return 201 and the created order', async function () {

@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Initializing containers
+        run: |
+          docker-compose up -d --build
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Creating database
+        run: npm run db:reset
+
+      - name: Run tests
+        run: npm test
+
+      - name: Stop containers
+        run: |
+          docker-compose down

@@ -33,3 +33,8 @@ export const getAllOrdersFromService = [
     productIds: [5],
   },
 ];
+
+export const createdOrderFromService = {
+  userId: 1,
+  productIds: [1, 2],
+};
