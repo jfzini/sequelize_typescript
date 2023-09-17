@@ -27,7 +27,8 @@ jobs:
         run: npm run db:reset
 
       - name: Run tests
-        run: docker exec -it trybesmith_api bash && npm test
+        run: |
+          docker exec trybesmith_api npm test
 
       - name: Stop containers
         run: |
