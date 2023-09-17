@@ -18,9 +18,9 @@ describe('Products Middlewares', function () {
   });
 
   context('validateLoginFields works as expected', function () {
-    it("should return status BAD REQUEST if username isn't sent", async function () {
+    it("should return status BAD REQUEST if username isn't sent", function () {
       req.body = { password: 'password' };
-      await middlewares.validateLoginFields(req, res, next);
+      middlewares.validateLoginFields(req, res, next);
 
       expect(res.status).to.have.been.calledWith(400);
       expect(res.json).to.have.been.calledWith({
@@ -28,9 +28,9 @@ describe('Products Middlewares', function () {
       });
     });
 
-    it("should return status BAD REQUEST if password isn't sent", async function () {
+    it("should return status BAD REQUEST if password isn't sent", function () {
       req.body = { username: 'username' };
-      await middlewares.validateLoginFields(req, res, next);
+      middlewares.validateLoginFields(req, res, next);
 
       expect(res.status).to.have.been.calledWith(400);
       expect(res.json).to.have.been.calledWith({
@@ -38,9 +38,9 @@ describe('Products Middlewares', function () {
       });
     });
 
-    it('should call next if username and password are sent', async function () {
+    it('should call next if username and password are sent', function () {
       req.body = { username: 'username', password: 'password' };
-      await middlewares.validateLoginFields(req, res, next);
+      middlewares.validateLoginFields(req, res, next);
 
       expect(next).to.have.been.called;
     });

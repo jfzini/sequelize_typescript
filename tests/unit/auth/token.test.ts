@@ -10,7 +10,7 @@ describe('Token', function () {
   });
 
   context('generateToken and jwt should have the correct behavior', function () {
-    const payload = { username: 'user', password: 'pass' };
+    const payload = { username: 'user', password: 'password' };
     it('should return a token', async function () {
       sinon.stub(jwt, 'sign').resolves(validToken); // using .returns() instead of .resolves() will need type casting
       
@@ -22,7 +22,7 @@ describe('Token', function () {
     it('jwt.sing() should have been called with the correct arguments', function () {
       sinon.stub(jwt, 'sign');
 
-      const payload = { username: 'user', password: 'pass' };
+      const payload = { username: 'user', password: 'password' };
 
       auth.generateToken(payload);
 
@@ -31,6 +31,24 @@ describe('Token', function () {
         expiresIn: '7d',
         algorithm: 'HS256',
       });
+    });
+  });
+
+  context('verifyToken and jwt should have the correct behavior', function () {
+    it('should return the decoded token', async function () {
+      sinon.stub(jwt, 'verify').resolves({ username: 'user', password: 'password' });
+
+      const result = await auth.verifyToken(validToken);
+
+      expect(result).to.be.deep.equal({ username: 'user', password: 'password' });
+    });
+
+    it('should return null if token is invalid', async function () {
+      sinon.stub(jwt, 'verify').throws();
+
+      const result = await auth.verifyToken(validToken);
+
+      expect(result).to.be.null;
     });
   });
 });
