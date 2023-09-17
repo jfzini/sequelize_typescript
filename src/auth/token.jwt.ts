@@ -1,11 +1,14 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 type TokenPayload = {
   username: string;
   password: string;
 };
 
-const secret = process.env.JWT_SECRET || 'secret';
+const secret = process.env.JWT_SECRET as string;
 
 const generateToken = (payload: TokenPayload): string => {
   const jwtConfig = {
@@ -25,4 +28,4 @@ const verifyToken = (token: string): TokenPayload | null => {
   }
 };
 
-export default { generateToken, verifyToken };
+export default { generateToken, verifyToken, secret };
