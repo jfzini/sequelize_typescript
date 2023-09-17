@@ -30,6 +30,7 @@ ___
 ## 🧑‍🔬 Testes
 
 A aplicação possui *testes de integração* e *testes unitários*. Para tanto, foram utilizados os frameworks `Mocha`, `Chai`, `Sinon` e `Chai-http`.
+
 Para executar os testes, você poderá executar os seguintes comandos:
 
 `npm run test` para executar todos os testes com o `Mocha`;
@@ -65,7 +66,6 @@ ___
   * jsonwebtoken
 
   * dotenv
-___
 
 ## 🐋 Rodando o projeto com Docker
 Para rodar o projeto utilizando docker, no diretório da aplicação execute o comando:
