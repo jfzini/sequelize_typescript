@@ -16,8 +16,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Initializing containers
+        run: |
+          docker-compose up -d --build
+
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
         run: npm test
+
+      - name: Stop containers
+        run: |
+          docker-compose down
