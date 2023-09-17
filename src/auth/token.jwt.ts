@@ -8,7 +8,7 @@ type TokenPayload = {
   password: string;
 };
 
-const secret = process.env.JWT_SECRET as string;
+const secret = process.env.JWT_SECRET || 'secret';
 
 const generateToken = (payload: TokenPayload): string => {
   const jwtConfig = {
