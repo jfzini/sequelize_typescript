@@ -26,6 +26,10 @@ jobs:
       - name: Creating database
         run: npm run db:reset
 
+      - name: Fix permissions inside the container
+        run: |
+          docker exec trybesmith_api chmod -R 777 /app/build
+
       - name: Run tests
         run: |
           docker exec trybesmith_api npm test
