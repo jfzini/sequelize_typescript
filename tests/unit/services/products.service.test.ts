@@ -4,7 +4,7 @@ import ProductModel from '../../../src/database/models/product.model';
 import { getAllProducts, productMock, resCreatedProduct, sentProduct } from '../../mocks/products.mocks';
 import services from '../../../src/services';
 
-describe.only('ProductsService', function () {
+describe('ProductsService', function () {
   context('createProduct should have the correct behavior', function () {
     beforeEach(function () {
       sinon.restore();
