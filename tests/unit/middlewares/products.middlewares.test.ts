@@ -6,7 +6,7 @@ import middlewares from '../../../src/middlewares/products.middlewares';
 
 chai.use(sinonChai);
 
-describe.only('Products Middlewares', function () {
+describe('Products Middlewares', function () {
 
   const req = {} as Request;
   const res = {} as Response;
