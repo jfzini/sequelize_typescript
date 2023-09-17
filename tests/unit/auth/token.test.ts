@@ -26,7 +26,7 @@ describe('Token', function () {
 
       auth.generateToken(payload);
 
-      expect(auth.secret).to.be.equal(process.env.JWT_SECRET);
+      expect(auth.secret).to.be.equal(process.env.JWT_SECRET || 'secret');
       expect(jwt.sign).to.have.been.calledWith(payload, auth.secret, {
         expiresIn: '7d',
         algorithm: 'HS256',
