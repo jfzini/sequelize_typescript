@@ -4,6 +4,12 @@
 
 ___
 
+## 📝 Instruções para inicializar o projeto
+
+Para que as tabelas do banco de dados sejam criada e populadas com os dados iniciais, é necessário executar o comando:
+
+`npm run db:reset`
+___
 ## 🧑‍💻 Habilidades Desenvolvidas
 
   * Criar uma API usando `Express`, `MySQL`, `Sequelize` em `Typescript`;
@@ -18,13 +24,15 @@ ___
 
   * Escrever testes de integração;
 
+  * Escrever testes unitários;
+
 ___
 ## 🧑‍🔬 Testes
 
-A aplicação possui *testes de integração*. Para tanto, foram utilizados os frameworks `Mocha`, `Chai`, `Sinon` e `Chai-http`.
-Para executar os testes, no diretório da aplicação `backend` você poderá executar os seguintes comandos:
+A aplicação possui *testes de integração* e *testes unitários*. Para tanto, foram utilizados os frameworks `Mocha`, `Chai`, `Sinon` e `Chai-http`.
+Para executar os testes, você poderá executar os seguintes comandos:
 
-`npm run test:local` para executar todos os testes com o `Mocha`;
+`npm run test` para executar todos os testes com o `Mocha`;
 `npm run test:coverage` para checar a cobertura de testes.
 
 ___
@@ -52,6 +60,11 @@ ___
 
   * Chai-http
 
+  * bcrypt
+
+  * jsonwebtoken
+
+  * dotenv
 ___
 
 ## 🐋 Rodando o projeto com Docker
