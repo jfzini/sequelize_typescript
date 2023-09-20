@@ -9,6 +9,8 @@ import app from '../../../src/app';
 import UserModel from '../../../src/database/models/user.model';
 import { mockedUserFromModel } from '../../mocks/user.mocks';
 import { productMock } from '../../mocks/products.mocks';
+import db from '../../../src/database/models';
+import { Transaction } from 'sequelize';
 
 chai.use(chaiHttp);
 
@@ -27,6 +29,7 @@ describe('POST /orders', function () {
   });
 
   it('should return 201 and the created order', async function () {
+    sinon.stub(db, 'transaction').resolves();
     sinon.stub(OrderModel, 'create').resolves(OrderModel.build({ id: 1, userId: 1 }));
     sinon.stub(ProductModel, 'update').resolves([1]);
     sinon.stub(UserModel, 'findByPk').resolves(UserModel.build(mockedUserFromModel));

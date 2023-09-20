@@ -4,6 +4,7 @@ import OrderModel from '../../../src/database/models/order.model';
 import ProductModel from '../../../src/database/models/product.model';
 import { getAllOrdersFromModel, getAllOrdersFromService } from '../../mocks/order.mocks';
 import services from '../../../src/services';
+import db from '../../../src/database/models';
 
 describe('OrdersService', function () {
   context('getAllOrders should have the correct behavior', function () {
@@ -46,6 +47,7 @@ describe('OrdersService', function () {
     });
 
     it('createOrder should return status CREATED and order when given a valid userId and productIds', async function () {
+      sinon.stub(db, 'transaction').resolves();
       sinon.stub(OrderModel, 'create').resolves(OrderModel.build({ id: 1, userId: 1 }));
       sinon.stub(ProductModel, 'update').resolves([1]);
 
@@ -55,6 +57,7 @@ describe('OrdersService', function () {
     });
 
     it('createOrder should return status INTERNAL_SERVER_ERROR when given an invalid userId', async function () {
+      sinon.stub(db, 'transaction').rejects();
       sinon.stub(OrderModel, 'create').resolves(OrderModel.build({ id: 1, userId: 1 }));
       sinon.stub(ProductModel, 'update').throws();
 
@@ -62,7 +65,7 @@ describe('OrdersService', function () {
 
       expect(result).to.deep.equal({
         status: 'INTERNAL_SERVER_ERROR',
-        data: { message: 'Something went wrong' },
+        data: { message: 'Something went wrong: Error: Error' },
       });
     });
   });
