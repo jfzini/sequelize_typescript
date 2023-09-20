@@ -39,8 +39,7 @@ const createOrder = async (userId: number, productIds: number[]): Promise<Servic
     });
     return { status: 'CREATED', data: { userId, productIds } };
   } catch (error) {
-    console.error(error);
-    return { status: 'INTERNAL_SERVER_ERROR', data: { message: 'Something went wrong' } };
+    return { status: 'INTERNAL_SERVER_ERROR', data: { message: `Something went wrong: ${error}` } };
   }
 };
 

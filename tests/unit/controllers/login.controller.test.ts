@@ -25,7 +25,6 @@ describe('LoginController', function () {
         .resolves({ status: 'SUCCESSFUL', data: { token: validToken } });
 
       req.body = { username: 'teste', password: 'teste' };
-      console.log(req);
 
       await controllers.userLogin(req, res);
 
