@@ -11,11 +11,11 @@ type TokenPayload = {
 const secret = process.env.JWT_SECRET || 'secret';
 
 const generateToken = (payload: TokenPayload): string => {
-  const jwtConfig = {
+  const jwtConfig: SignOptions = {
     expiresIn: '7d',
     algorithm: 'HS256',
   };
-  const token = jwt.sign(payload, secret, jwtConfig as SignOptions);
+  const token = jwt.sign(payload, secret, jwtConfig);
   return token;
 };
 
